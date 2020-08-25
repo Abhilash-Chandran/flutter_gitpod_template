@@ -1,9 +1,11 @@
-FROM cirrusci/flutter:latest
+FROM gitpod/workspace-full
 
-# Install custom tools, runtimes, etc.
-# For example "bastet", a command-line tetris clone:
-# RUN brew install bastet
-#
-# More information: https://www.gitpod.io/docs/config-docker/
+ENV FLUTTER_HOME=/home/gitpod/flutter
+
+RUN apt update && apt install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget
 
 USER gitpod
+
+WORKDIR /home/gitpod
+
+sudo snap install flutter --classic
