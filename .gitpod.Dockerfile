@@ -8,4 +8,4 @@ USER gitpod
 
 WORKDIR /home/gitpod
 
-RUN sudo snap install flutter --classic
+RUN snap install flutter --classic
