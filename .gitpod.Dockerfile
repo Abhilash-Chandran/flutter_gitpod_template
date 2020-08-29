@@ -36,16 +36,9 @@ RUN set -o xtrace \
     && chmod +x /usr/bin/android-wait-for-emulator \
     && touch /root/.android/repositories.cfg \
     && sdkmanager platform-tools \
-    && sdkmanager emulator \
-    && echo "Adding cirrus user and group" \
-    && useradd --system --uid 1000 --shell /bin/bash --create-home cirrus \
-    && adduser cirrus sudo \
-    && mkdir -p /home/cirrus/.android \
-    && touch /home/cirrus/.android/repositories.cfg \
-    && chown --recursive cirrus:cirrus /home/cirrus \
-    && chown --recursive cirrus:cirrus ${ANDROID_HOME} \
-    && git config --global user.email "support@cirruslabs.org" \
-    && git config --global user.name "Cirrus CI"
+    && sdkmanager emulator \    
+    && mkdir -p /home/gitpod/.android \
+    && touch /home/gitpod/.android/repositories.cfg \    
 
 WORKDIR /home/gitpod
 
