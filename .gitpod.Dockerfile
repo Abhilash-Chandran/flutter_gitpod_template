@@ -57,4 +57,4 @@ ENV PATH ${PATH}:${FLUTTER_HOME}/bin:${FLUTTER_HOME}/bin/cache/dart-sdk/bin
 
 RUN yes | flutter doctor --android-licenses && flutter doctor
 
-RUN flutter channel beta && flutter upgrade flutter && config --enable-web
+RUN flutter channel beta && flutter upgrade && flutter config --enable-web
