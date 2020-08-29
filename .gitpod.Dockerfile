@@ -2,8 +2,6 @@ FROM gitpod/workspace-full
 
 USER root
 
-RUN apt-get update && apt-get install -y curl git unzip xz-utils zip libglu1-mesa openjdk-8-jdk wget
-
 ENV ANDROID_HOME=/opt/android-sdk-linux \
     HOME=/home/gitpod \
     LANG=en_US.UTF-8 \
@@ -60,8 +58,10 @@ RUN yes | sdkmanager \
 
 USER gitpod
 
-RUN git clone https://github.com/flutter/flutter.git --depth 1
+RUN git clone https://github.com/flutter/flutter.git
 
 ENV PATH ${PATH}:${FLUTTER_HOME}/bin:${FLUTTER_HOME}/bin/cache/dart-sdk/bin
 
 RUN yes | flutter doctor --android-licenses && flutter doctor
+
+RUN flutter upgrade
