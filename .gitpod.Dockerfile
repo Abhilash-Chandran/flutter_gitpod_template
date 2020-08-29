@@ -63,13 +63,12 @@ RUN yes | sdkmanager \
 
 RUN git clone https://github.com/flutter/flutter.git --depth 1
 
+ENV PATH ${PATH}:${FLUTTER_HOME}/bin:${FLUTTER_HOME}/bin/cache/dart-sdk/bin
 ENV ANDROID_PLATFORM_VERSION 29
 ENV ANDROID_BUILD_TOOLS_VERSION 29.0.3
 
 RUN yes | sdkmanager \
     "platforms;android-$ANDROID_PLATFORM_VERSION" \
     "build-tools;$ANDROID_BUILD_TOOLS_VERSION"
-
-ENV PATH ${PATH}:${FLUTTER_HOME}/bin:${FLUTTER_HOME}/bin/cache/dart-sdk/bin
 
 RUN yes | flutter doctor --android-licenses && flutter doctor
