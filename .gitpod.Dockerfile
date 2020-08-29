@@ -49,9 +49,6 @@ RUN set -o xtrace \
     && git config --global user.email "support@cirruslabs.org" \
     && git config --global user.name "Cirrus CI"
 
-
-USER gitpod
-
 WORKDIR /home/gitpod
 
 ENV ANDROID_PLATFORM_VERSION 29
@@ -60,6 +57,8 @@ ENV ANDROID_BUILD_TOOLS_VERSION 29.0.3
 RUN yes | sdkmanager \
     "platforms;android-$ANDROID_PLATFORM_VERSION" \
     "build-tools;$ANDROID_BUILD_TOOLS_VERSION"
+
+USER gitpod
 
 RUN git clone https://github.com/flutter/flutter.git --depth 1
 
